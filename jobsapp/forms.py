@@ -33,18 +33,18 @@ class CreateJobForm(forms.ModelForm):
             raise ValidationError("Last date can't be before from today")
         return date
 
-    def clean_tags(self):
-        tags = self.cleaned_data["tags"]
-        if len(tags) > 6:
-            raise forms.ValidationError("You can't add more than 6 tags")
-        return tags
+    # def clean_tags(self):
+    #     tags = self.cleaned_data["tags"]
+    #     if len(tags) > 6:
+    #         raise forms.ValidationError("You can't add more than 6 tags")
+    #     return tags
 
     def save(self, commit=True):
         job = super(CreateJobForm, self).save(commit=False)
         if commit:
             job.save()
-            for tag in self.cleaned_data["tags"]:
-                job.tags.add(tag)
+            # for tag in self.cleaned_data["tags"]:
+            #     job.tags.add(tag)
         return job
 
 

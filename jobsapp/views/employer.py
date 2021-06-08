@@ -10,7 +10,7 @@ from accounts.forms import EmployerProfileUpdateForm
 from jobsapp.decorators import user_is_employer
 from jobsapp.forms import CreateJobForm
 from jobsapp.models import Job, Applicant
-from tags.models import Tag
+# from tags.models import Tag
 
 
 class DashboardView(ListView):
@@ -63,7 +63,7 @@ class JobCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["tags"] = Tag.objects.all()
+        # context["tags"] = Tag.objects.all()
         return context
 
     def form_valid(self, form):
