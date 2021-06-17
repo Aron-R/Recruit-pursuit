@@ -1,0 +1,105 @@
+
+<html>
+    <body>
+        <h1>Freelancing</h1>
+    </body>
+</html>
+<!-- {% extends 'base.html' %}
+{% load static %}
+{% load is_favorited %}
+{% block title %}
+    All jobs
+{% endblock %}
+
+<section class="bg-light-gray">
+    <div class="container">
+        <h3 class="heading">Featured jobs</h3>
+        <div class="row featured align-items-stretch">
+            {% for job in jobs %}
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="box-image-text bg-visible full-height">
+                        <div class="top">
+                            <a href="#">
+                                <div class="image">
+                                    <img src="{% static 'img/featured1.jpg' %}" alt="" class="img-fluid">
+                                </div>
+                                <div class="bg"></div>
+                                <div class="logo">
+                                    <img src="{% static 'img/company-1.png' %}" alt="" style="max-width: 80px;">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h5><a href="{% url 'jobs:jobs-detail' job.id %}">{{ job.title }}</a></h5>
+                            <p class="featured__details"><i class="fa fa-map-marker job__location"></i>
+                                {{ job.location }}
+                                {% if job.type == '1' %}
+                                    <span class="badge featured-badge badge-success">Full time</span>
+                                {% elif job.type == '2' %}
+                                    <span class="badge featured-badge badge-primary">Part time</span>
+                                {% else %}
+                                    <span style="color: #ffffff;" class="badge featured-badge badge-warning">Internship</span>
+                                {% endif %}
+                            </p>
+                            {% for tag in job.tags.all %}
+                                <span style="color: #ffffff;"
+                                      class="badge featured-badge badge-secondary">{{ tag.name }}</span>
+                            {% endfor %}
+                            <p>{{ job.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+{% block javascripts %}
+
+    <script>
+        let csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        $('.job__star__link').on('click', function () {
+            let job_id = $(this).data('id');
+            let that = $(this);
+            $.ajax({
+                type: "POST",
+                url: "{% url 'jobs:favorite' %}",
+                data: {job_id},
+                success: function (res, textStatus, xhr) {
+                    if (res.status === "added") {
+                        that.addClass('favorite');
+                        toastr.success(res.message);
+                    } else if (res.status === "removed") {
+                        document.activeElement.blur();
+                        that.removeClass('favorite');
+                        toastr.warning(res.message);
+                    }
+                },
+                error: function (err, textStatus, xhr) {
+                    if (xhr === "Unauthorized") {
+                        toastr.error("Unauthorized");
+                    } else {
+                        toastr.error("Something wrong");
+                    }
+                }
+            })
+        });
+    </script>
+
+{% endblock %} -->

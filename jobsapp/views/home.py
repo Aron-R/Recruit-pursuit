@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponseRedirect, JsonResponse
+from django.http import Http404, HttpResponseRedirect, JsonResponse, HttpResponse
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.decorators import method_decorator
@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 
 from ..documents import JobDocument
 from ..forms import ApplyJobForm
-from ..models import Job, Applicant, Favorite
+from ..models import *
 
 
 class HomeView(ListView):
@@ -137,3 +137,14 @@ def favorite(request):
                 "message": "Job added to your favorite list",
             }
         )
+
+class FreelancingJobView(ListView):
+    model = Freelancing_Job
+    template_name = "jobs/freelancing.html"
+    context_object_name = "jobs"
+    paginate_by = 5
+
+
+
+def uh(request):
+    return HttpResponse('<h1> IT WORKS NOW </h1>')

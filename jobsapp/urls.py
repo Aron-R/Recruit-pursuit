@@ -1,6 +1,7 @@
 from django.urls import path, include
 
 from .views import *
+from . import views
 
 app_name = "jobs"
 
@@ -8,6 +9,9 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("favorite/", favorite, name="favorite"),
     path("search/", SearchView.as_view(), name="search"),
+    # path("FreelancingJobView/",FreelancingJobView.views ,name="freelancing_mod"),
+    path("uh",views.uh,name = "uh"),
+
     path(
         "employer/dashboard/",
         include(
