@@ -146,5 +146,29 @@ class FreelancingJobView(ListView):
 
 
 
-def uh(request):
-    return HttpResponse('<h1> IT WORKS NOW </h1>')
+class uh(ListView):
+    model = Freelancing_Job
+    template_name = "jobs/freelancing.html"
+    context_object_name = "jobs"
+    paginate_by = 5
+
+class uh2(DetailView):
+    model = Freelancing_Job
+    template_name = "jobs/details.html"
+    context_object_name = "job"
+    pk_url_kwarg = "id"
+
+    def get_object(self, queryset=None):
+        obj = super(JobDetailsView, self).get_object(queryset=queryset)
+        if obj is None:
+            raise Http404("Job doesn't exists")
+        return obj
+
+    def get(self, request, *args, **kwargs):
+        try:
+            self.object = self.get_object()
+        except Http404:
+            # raise error
+            raise Http404("Job doesn't exists")
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)

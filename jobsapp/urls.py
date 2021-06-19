@@ -10,7 +10,7 @@ urlpatterns = [
     path("favorite/", favorite, name="favorite"),
     path("search/", SearchView.as_view(), name="search"),
     # path("FreelancingJobView/",FreelancingJobView.views ,name="freelancing_mod"),
-    path("uh",views.uh,name = "uh"),
+    path("uh",uh.as_view(),name = "uh"),
 
     path(
         "employer/dashboard/",
