@@ -6,7 +6,21 @@
     Skillsets
 {% endblock %}
 {% block content %}
-
+<!-- <head>
+    <script>
+        var selected = new Array();
+        var chkbox = document.getElementById("skill")
+        var selchk = chkbox.getElementsByTagName("input")
+        for(var i=0;i<selchk.length;i++)
+        {
+            if(selchk[i].checked)
+            {
+                selected.push(selchk[i].value);
+            }
+        }
+    </script>
+</head>
+<body> -->
 <!-- <section class="bg-light-gray">
     <div class="container">
         <div class="row">
@@ -56,12 +70,24 @@
                 <hr>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-lg-12 form-group">
-                <label for="title">Name</label>
-                <input type="text" id="n_name" placeholder="n_name" name="n_name" required>
-            </div>
-        </div>
+                <label for="title">Skills you possess:</label>
+                <br>
+    <table id="skill">
+        <tr>
+            <td>
+                {% for i in colors %}
+                <!-- <input type="text" id="n_name" placeholder="n_name" name="n_name" required> -->
+                <input type="checkbox" value="{{i.colors}}", name="checks"> <p>  {{i.colors}}  </p>
+                {% endfor %}
+            </td>
+            </tr>
+    </table>
+
+</div>
+</div>
 
         <br>
         <button class="button" type="submit" onclick="this.disabled=true,this.form.submit();">Find out</button>
@@ -81,3 +107,4 @@
 </script>
 
 {% endblock %} -->
+<!-- </body> -->
