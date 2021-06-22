@@ -64,7 +64,7 @@
                             <a href="{% url 'jobs:uh' %}" class="nav-link">Freelancing</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Skillsets</a>
+                            <a href="{% url 'jobs:skillsets' %}" class="nav-link">Skillsets</a>
                         </li>
                         {% if request.user.is_authenticated and request.user.role == 'employer' %}
                         <li class="nav-item dropdown">

@@ -138,13 +138,6 @@ def favorite(request):
             }
         )
 
-class FreelancingJobView(ListView):
-    model = Freelancing_Job
-    template_name = "jobs/freelancing.html"
-    context_object_name = "jobs"
-    paginate_by = 5
-
-
 
 class uh(ListView):
     model = Freelancing_Job
@@ -172,3 +165,16 @@ class uh2(DetailView):
             raise Http404("Job doesn't exists")
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
+
+
+class skillset(ListView):
+    model = Job
+    template_name = "skillsets.html"
+    context_object_name = "jobs"
+    paginate_by = 5
+
+class skillsetDetails(DetailView):
+    model = Job
+    template_name = "skillsets.html"
+    context_object_name = "job"
+    pk_url_kwarg = "id"

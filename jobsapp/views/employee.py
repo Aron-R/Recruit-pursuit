@@ -9,6 +9,7 @@ from accounts.models import User
 from jobsapp.decorators import user_is_employee
 from jobsapp.models import Favorite, Applicant
 
+from django.shortcuts import render
 
 @method_decorator(login_required(login_url=reverse_lazy("accounts:login")), name="dispatch")
 @method_decorator(user_is_employee, name="dispatch")
@@ -67,3 +68,7 @@ class FavoriteListView(ListView):
 
     def get_queryset(self):
         return self.model.objects.select_related("job__user").filter(soft_deleted=False, user=self.request.user)
+
+def skillset(request,id):
+    # quality=get_object_or_404(GreySuppliersMaster,id=id)
+    return render(request,'skillsets.html')
