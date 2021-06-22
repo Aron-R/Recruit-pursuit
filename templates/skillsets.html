@@ -1,8 +1,83 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+
 {% block title %}
     Skillsets
 {% endblock %}
+{% block content %}
 
-<h1> it works </h1>
+<!-- <section class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="heading">Skillsets</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+                <form id="job-main-form" method="post" action="" class="job-add-form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4>Skillsets</h4>
+                            <p class="text-muted text-small">Would you like to assess the most essential skilss in your current field? </p>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 form-group">
+                            <label for="title">Enter your skills</label>
+                            <input id="title" name="title" type="text" class="form-control" value="{{ form.title.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <hr>
+                            <button type="submit" class="btn btn-outline-white-primary"><i class="fa fa-magic"></i>
+                                Find out now
+                            </button>
+                        </div>
+                    </div>
+                </form>
+           </div>
+</section>  -->
+
+<form method="POST" action="{% url 'jobs:skillsetResult' %}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Skillsets</h4>
+                <p class="text-muted text-small"> Would you like to assess the most essential skilss in your current field? </p>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <label for="title">Name</label>
+                <input type="text" id="n_name" placeholder="n_name" name="n_name" required>
+            </div>
+        </div>
+
+        <br>
+        <button class="button" type="submit" onclick="this.disabled=true,this.form.submit();">Find out</button>
+  </form>
+
+
+{% endblock %}
+
+<!-- {% block javascripts %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.js-select2').select2();
+    });
+</script>
+
+{% endblock %} -->

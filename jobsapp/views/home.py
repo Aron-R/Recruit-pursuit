@@ -9,8 +9,12 @@ from rest_framework.decorators import api_view
 
 from ..documents import JobDocument
 from ..forms import ApplyJobForm
-from ..models import *
 
+# included
+from ..models import *
+from django.views import View
+from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 
 class HomeView(ListView):
     model = Job
@@ -167,14 +171,65 @@ class uh2(DetailView):
         return self.render_to_response(context)
 
 
-class skillset(ListView):
-    model = Job
-    template_name = "skillsets.html"
-    context_object_name = "jobs"
-    paginate_by = 5
 
-class skillsetDetails(DetailView):
-    model = Job
-    template_name = "skillsets.html"
-    context_object_name = "job"
-    pk_url_kwarg = "id"
+def skillset(request):
+    all_checker = Job.objects.all()
+    paginator = Paginator(all_checker,10)
+    page = request.GET.get('page')
+    checkers = paginator.get_page(page)
+    return render(request,'./skillsets.html')
+
+def skillsetResult(request):
+    n = request.POST.get("n_name")
+    print(n)
+    # if (n!=None|n!=''):
+    #     return render(request,'./skillsetResult-1')
+    # else:
+    #     return redirect('./skillsets.html')
+    return render(request,'./skillsets.html')
+    
+def render_skill(request):
+    all_checker = Job.objects.all()
+    paginator = Paginator(all_checker,10)
+    page = request.GET.get('page')
+    checkers = paginator.get_page(page)
+    return render(request,'./skillsetResult-1.html')
+
+# def saveGreySupplier(request):
+#     q=request.POST.get("id")
+#     # q = q.strip()
+#     l=(request.POST.get("supplier_name"))
+
+#     m=request.POST.get("address")
+#     m = m.strip()
+#     n=request.POST.get("city")
+#     n = n.strip()
+#     o=request.POST.get("contact_number")
+#     o = o.strip()
+#     p=request.POST.get("email")
+#     p = p.strip()
+
+#     r=request.POST.get("remarks")
+#     r = r.strip()
+
+
+#     try:
+#         existing_quality=get_object_or_404(GreySuppliersMaster,id=q,supplier_name=l)
+#         messages.error(request,"This supplier already exists")
+#     except:
+#         if  m=="" or n=="" or o=="" or p=="" or q=="" or l=="":
+#             messages.error(request,"please enter valid input")
+#             return redirect('masterGreySuppliers')
+#         new_quality = GreySuppliersMaster(
+#             id = q,
+#             supplier_name = l,
+#             city = n.upper(),
+#             address = m.upper(),
+#             email=p,
+#             contact_number=o,
+#             remarks=r.upper()
+
+#         )
+#         new_quality.save()
+#         messages.success(request,"Supplier added")
+#     return redirect('masterGreySuppliers')
