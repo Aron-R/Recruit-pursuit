@@ -177,12 +177,15 @@ def skillset(request):
     paginator = Paginator(all_checker,10)
     page = request.GET.get('page')
     checkers = paginator.get_page(page)
-    result = colors.objects.all()
-    return render(request,'./skillsets.html',{"colors":result})
+    result = skillset_table.objects.all()
+    j = ['Web developer','Python programmer', 'Data Scientist','Full Stack Developer']
+    return render(request,'./skillsets.html',{"skills":result, "jobs":j})
 
 def skillsetResult(request):
     n = request.POST.getlist('checks')
-    print(n)
+    j = request.POST.get('job_name')
+    
+    print(n,j)
     if (n):
         return render(request,'./skillsets-case1.html')
     # else:

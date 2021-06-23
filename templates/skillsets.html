@@ -59,14 +59,23 @@
                 </form>
            </div>
 </section>  -->
-
+<section class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="heading">Skillsets</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<div class="container">
 <form method="POST" action="{% url 'jobs:skillsetResult' %}">
     {% csrf_token %}
-    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h4>Skillsets</h4>
-                <p class="text-muted text-small"> Would you like to assess the most essential skilss in your current field? </p>
+                <p class="text-muted text-small"> Would you like for us to recommend courses given your current skills? </p>
                 <hr>
             </div>
         </div>
@@ -78,21 +87,30 @@
     <table id="skill">
         <tr>
             <td>
-                {% for i in colors %}
+                {% for i in skills %}
                 <!-- <input type="text" id="n_name" placeholder="n_name" name="n_name" required> -->
-                <input type="checkbox" value="{{i.colors}}", name="checks"> <p>  {{i.colors}}  </p>
+                <input type="checkbox" value="{{i.user_qualifications}}", name="checks"> <p>  {{i.user_qualifications}}  </p>
                 {% endfor %}
             </td>
             </tr>
+        
+            <label> Position you'd like to apply for <label>
+                <select id="job_name" name="job_name">
+                    {% for i in jobs %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+        
     </table>
 
 </div>
 </div>
 
         <br>
-        <button class="button" type="submit" onclick="this.disabled=true,this.form.submit();">Find out</button>
+        <button class="btn btn-outline-white-primary" type="submit" onclick="this.disabled=true,this.form.submit();">Find out</button>
   </form>
 
+</div class="container">
 
 {% endblock %}
 

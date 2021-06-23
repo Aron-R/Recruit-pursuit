@@ -102,8 +102,14 @@ class Freelancing_Job(models.Model):
     def __str__(self):
         return self.title
 
-class colors(models.Model):
-    colors = models.CharField(max_length=100)
+# class colors(models.Model):
+#     colors = models.CharField(max_length=100)
 
+#     class Meta:
+#         db_table = "colors"
+
+class skillset_table(models.Model):
+    user_qualifications = models.CharField(max_length=100)
     class Meta:
-        db_table = "colors"
+        db_table = "skillset_table"
+
