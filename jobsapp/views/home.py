@@ -185,11 +185,16 @@ def skillsetResult(request):
     n = request.POST.getlist('checks')
     j = request.POST.get('job_name')
     
-    print(n,j)
-    if (n):
+    # print(n,j)
+    if (('C++' not in n) and ('R' not in n)):
         return render(request,'./skillsets-case1.html')
-    # else:
-    #     return redirect('./skillsets.html')
+    elif (j == 'Full Stack Developer'):
+        return render(request,'./skillsets-case2.html')
+    elif ('Python' not in n):
+        return render(request,'./skillsets-case3.html')
+    else:
+        return render(request,'./skillsets-case4.html') 
+
     return render(request,'./skillsets.html')
 
 def render_skill(request):

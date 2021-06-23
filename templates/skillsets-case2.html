@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Skillsets - 2
+{% endblock %}
+
+{% block content %}
+<section class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="heading">Your Recomended Courses</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<div class="container">
+<div class="row">
+    <div class="col-lg-8">
+        
+        <div class="logo">
+            <img src="{% static 'img/coursera.png' %}" alt="" style="max-width: 80px;">
+            <br>
+        </div>
+        <a href="https://www.coursera.org/specializations/full-stack-react"
+           class="page-link">Full-Stack Web Development with React Specialization</a>
+        <blockquote class="blockquote">
+            <p>Build Complete Web and Hybrid Mobile Solutions. Master front-end web, hybrid mobile app and server-side development in three comprehensive courses.<br></p>
+        </blockquote>
+    </div>
+
+</section>
+
+
+{% endblock %}
+
