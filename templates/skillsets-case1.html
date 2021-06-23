@@ -1,8 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>
-            you did you, jeffery bezos
-        </h1>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Skillsets - 1
+{% endblock %}
+
+{% block content %}
+
+<section class="job-form-section job-form-section--image">
+<div class="container">
+
+    <div class="image">
+        <img src="{% static 'img/coursera.jpg' %}" alt="" class="img-fluid">
+    </div>
+
+</div>
+</section>
+
+
+
+
+{% endblock %}
+
