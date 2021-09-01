@@ -113,3 +113,8 @@ class skillset_table(models.Model):
     class Meta:
         db_table = "skillset_table"
 
+
+class test1(models.Model):
+    test= models.CharField(max_length=100)
+    class Meta:
+        db_table = "test1"

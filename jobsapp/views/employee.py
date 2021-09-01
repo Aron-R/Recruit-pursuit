@@ -69,6 +69,3 @@ class FavoriteListView(ListView):
     def get_queryset(self):
         return self.model.objects.select_related("job__user").filter(soft_deleted=False, user=self.request.user)
 
-def skillset(request,id):
-    # quality=get_object_or_404(GreySuppliersMaster,id=id)
-    return render(request,'skillsets.html')
