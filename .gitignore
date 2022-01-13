@@ -264,3 +264,6 @@ __pycache__/
 jobs/staticfiles
 logs/*.log.*
 logs/*
+
+# Mac OS
+.DS_Store
